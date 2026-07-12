@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order · Frost & Scoop</title>
+  <meta name="description" content="Place your premium ice cream order. Frost & Scoop delivers handcrafted organic ice cream, sundaes, shakes and toppings.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d0b0a;
+      color: #e8e0d8;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1, h2, h3, .logo, .nav-links a, .page-title { font-family: 'Playfair Display', serif; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 0.8rem 2rem;
+      background: rgba(13, 11, 10, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo { font-size: 1.8rem; font-weight: 700; color: #e8e0d8; letter-spacing: -0.5px; }
+    .logo i { color: #d4af37; margin-right: 6px; }
+    .nav-links { display: flex; gap: 2.2rem; font-weight: 500; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: #c8c0b8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a:hover { border-bottom-color: #d4af37; color: #d4af37; }
+
+    .order-hero {
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      background: linear-gradient(145deg, #0d0b0a 0%, #1a1512 100%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+    }
+    .order-hero .eyebrow {
+      color: #d4af37;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .order-hero h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      color: #e8e0d8;
+    }
+    .order-hero h1 span {
+      background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: goldShine 4s ease-in-out infinite;
+    }
+    @keyframes goldShine { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+    .order-hero p { color: #a89888; font-weight: 300; max-width: 500px; margin: 0.5rem auto 0; }
+
+    .order-main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 2.5rem;
+      margin: 2.5rem 0 4rem;
+      align-items: start;
+    }
+
+    .form-panel {
+      background: rgba(20, 17, 15, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.09);
+      padding: 2.5rem;
+    }
+    .form-panel h2 {
+      font-size: 1.8rem;
+      color: #e8e0d8;
+      margin-bottom: 0.2rem;
+    }
+    .form-panel .section-note-inline {
+      color: #8a7a6a;
+      font-size: 0.92rem;
+      font-weight: 300;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem; }
+    .form-group { margin-bottom: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #a89888;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.85rem 1.1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(13, 11, 10, 0.6);
+      color: #e8e0d8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #d4af37;
+      background: rgba(13, 11, 10, 0.9);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #5a4a3a; }
+
+    .product-summary {
+      background: rgba(212, 175, 55, 0.06);
+      border-radius: 1.2rem;
+      padding: 1rem 1.4rem;
+      margin-bottom: 1.4rem;
+      border-left: 3px solid #d4af37;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .product-summary .pname { color: #e8e0d8; font-weight: 500; }
+    .product-summary .pprice { color: #d4af37; font-weight: 600; font-size: 1.2rem; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      border: none;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #d4af37, #b8941e);
+      color: #0d0b0a;
+      box-shadow: 0 8px 30px -8px rgba(212, 175, 55, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 40px -8px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(135deg, #e0c040, #d4af37);
+    }
+    .btn-block { width: 100%; text-align: center; margin-top: 0.4rem; }
+
+    .side-panel { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .order-summary-card {
+      background: rgba(20, 17, 15, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.09);
+      padding: 1.8rem 2rem;
+    }
+    .order-summary-card h3 {
+      font-size: 1.15rem;
+      color: #e8e0d8;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .order-summary-card h3 i { color: #d4af37; }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+      font-size: 0.95rem;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row .label { color: #c8c0b8; }
+    .summary-row .value { color: #e8e0d8; font-weight: 500; }
+
+    .privacy-note {
+      background: rgba(20, 17, 15, 0.6);
+      border-radius: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.06);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .privacy-note i { color: #d4af37; font-size: 1.2rem; }
+    .privacy-note p { color: #8a7a6a; font-size: 0.8rem; font-weight: 300; }
+
+    footer {
+      margin-top: 2rem;
+      padding: 2.5rem 0 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-links a { margin: 0 1rem 0 0; color: #8a7a6a; text-decoration: none; transition: 0.3s ease; font-weight: 300; }
+    .footer-links a:hover { color: #d4af37; }
+    .footer-links span { color: #4a3a2a; }
+    .social i { font-size: 1.6rem; margin-left: 1rem; color: #5a4a3a; transition: 0.3s ease; }
+    .social i:hover { color: #d4af37; transform: scale(1.1); }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(212, 175, 55, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 1.1rem;
+      border-radius: 60px;
+      color: #d4af37;
+      font-size: 1.4rem;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+    .back-to-top:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: scale(1.05);
+      color: #f0d060;
+    }
+
+    @media (max-width: 900px) {
+      .order-main { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { gap: 1rem; }
+      .container { padding: 0 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-panel { padding: 1.8rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><i class="fas fa-ice-cream"></i> Frost & Scoop</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="menu-ice-cream-shop.html">Menu</a>
+    <a href="contactus-ice-cream-shop.html">Contact</a>
+  </div>
+</nav>
+
+<section class="order-hero">
+  <div class="eyebrow"><i class="fas fa-truck"></i> Order confirmation</div>
+  <h1>Almost <span>yours</span></h1>
+  <p>Fill in your details and we'll get your premium ice cream on its way.</p>
+</section>
+
+<main class="container order-main">
+
+  <div class="form-panel">
+    <h2>Delivery details</h2>
+    <p class="section-note-inline">We'll send your order confirmation to this address.</p>
+
+    <div class="product-summary" id="productSummary">
+      <span class="pname" id="displayProduct">—</span>
+      <span class="pprice" id="displayPrice">—</span>
+    </div>
+
+    <form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="orderForm">
+      <input type="hidden" name="form-name" value="order">
+
+      <p hidden><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <input type="hidden" id="hiddenProduct" name="product" value="">
+      <input type="hidden" id="hiddenPrice" name="price" value="">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Delivery Address</label>
+        <textarea id="address" name="address" placeholder="Street, building, landmark…" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="pincode">PIN Code</label>
+          <input type="text" id="pincode" name="pincode" placeholder="6-digit code" required>
+        </div>
+        <div class="form-group" style="justify-content: flex-end;">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-block"><i class="fas fa-check-circle"></i> Place Order</button>
+    </form>
+  </div>
+
+  <div class="side-panel">
+    <div class="order-summary-card">
+      <h3><i class="fas fa-receipt"></i> Order summary</h3>
+      <div class="summary-row"><span class="label">Item</span><span class="value" id="summaryProduct">—</span></div>
+      <div class="summary-row"><span class="label">Price</span><span class="value" id="summaryPrice">—</span></div>
+      <div class="summary-row"><span class="label">Delivery</span><span class="value" style="color:#8a7a6a;font-weight:300;">Calculated at checkout</span></div>
+    </div>
+
+    <div class="privacy-note">
+      <i class="fas fa-lock"></i>
+      <p>Your details are safe with us. We'll confirm your order manually and ship it fresh.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="container">
+  <div class="footer-links">
+    <a href="index.html">Home</a> <a href="menu-ice-cream-shop.html">Menu</a> <a href="contactus-ice-cream-shop.html">Contact</a> <span>© 2026 Frost & Scoop</span>
+  </div>
+  <div class="social">
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-twitter"></i>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    let product = params.get('product') || '';
+    let price = params.get('price') || '';
+
+    product = product.trim() ? product : 'Premium ice cream';
+    price = price.trim() ? price : '0.00';
+
+    let displayPrice = price;
+    if (!displayPrice.includes('$')) {
+      displayPrice = `$${displayPrice}`;
+    }
+
+    const displayProductEl = document.getElementById('displayProduct');
+    const displayPriceEl = document.getElementById('displayPrice');
+    const summaryProduct = document.getElementById('summaryProduct');
+    const summaryPrice = document.getElementById('summaryPrice');
+    const hiddenProduct = document.getElementById('hiddenProduct');
+    const hiddenPrice = document.getElementById('hiddenPrice');
+
+    if (displayProductEl) displayProductEl.textContent = product;
+    if (displayPriceEl) displayPriceEl.textContent = displayPrice;
+    if (summaryProduct) summaryProduct.textContent = product;
+    if (summaryPrice) summaryPrice.textContent = displayPrice;
+    if (hiddenProduct) hiddenProduct.value = product;
+    if (hiddenPrice) hiddenPrice.value = price;
+
+    if (!product) {
+      if (displayProductEl) displayProductEl.textContent = 'No product selected';
+      if (summaryProduct) summaryProduct.textContent = '—';
+    }
+  })();
+</script>
+
+</body>
+</html>
