@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu |Premium Ice Cream Flavors | Organic Ice Cream Shop</title>
+  <meta name="description" content="Visit our icecream shop for premium icecream, handcrafted organic ice cream, rich icecream flavors, delicious sundaes, refreshing shakes, and toppings.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d0b0a;
+      color: #e8e0d8;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo, .nav-links a, .page-title { font-family: 'Playfair Display', serif; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 0.8rem 2rem;
+      background: rgba(13, 11, 10, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo { font-size: 1.8rem; font-weight: 700; color: #e8e0d8; letter-spacing: -0.5px; }
+    .logo i { color: #d4af37; margin-right: 6px; }
+    .nav-links { display: flex; gap: 2.2rem; font-weight: 500; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: #c8c0b8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a:hover, .nav-links a.active { border-bottom-color: #d4af37; color: #d4af37; }
+
+    /* ===== MENU HERO ===== */
+    .menu-hero {
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(145deg, #0d0b0a 0%, #1a1512 100%);
+      overflow: hidden;
+    }
+    .menu-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .menu-hero .eyebrow {
+      display: inline-block;
+      color: #d4af37;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+    .page-title {
+      font-size: clamp(2.6rem, 8vw, 4.2rem);
+      font-weight: 700;
+      color: #e8e0d8;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.1s forwards;
+    }
+    .page-title span {
+      background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: goldShine 4s ease-in-out infinite;
+    }
+    @keyframes goldShine { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+    .menu-hero p {
+      max-width: 520px;
+      margin: 1rem auto 0;
+      color: #a89888;
+      font-weight: 300;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.2s forwards;
+    }
+    @keyframes fadeUp { 0%{opacity:0;transform:translateY(20px);} 100%{opacity:1;transform:translateY(0);} }
+
+    /* ===== CATEGORY NAV ===== */
+    .category-nav {
+      position: sticky;
+      top: 63px;
+      z-index: 900;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding: 1rem 1.2rem;
+      background: rgba(13, 11, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+      margin-bottom: 1rem;
+    }
+    .category-nav a {
+      text-decoration: none;
+      color: #a89888;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      transition: 0.3s ease;
+      white-space: nowrap;
+    }
+    .category-nav a:hover, .category-nav a:focus-visible {
+      color: #0d0b0a;
+      background: #d4af37;
+      border-color: #d4af37;
+    }
+
+    /* ===== MENU SECTIONS ===== */
+    .menu-section { padding: 3.5rem 0 1rem; scroll-margin-top: 130px; }
+    .section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
+    .section-head i { color: #d4af37; font-size: 1.6rem; }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #e8e0d8;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #d4af37, transparent);
+    }
+    .section-note { color: #8a7a6a; font-weight: 300; font-size: 0.95rem; margin-left: auto; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .menu-item {
+      display: flex;
+      gap: 1.1rem;
+      align-items: center;
+      padding: 1.1rem;
+      background: rgba(20, 17, 15, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 1.6rem;
+      border: 1px solid rgba(212, 175, 55, 0.07);
+      transition: all 0.3s ease;
+    }
+    .menu-item:hover {
+      background: rgba(30, 25, 22, 0.9);
+      border-color: rgba(212, 175, 55, 0.22);
+      transform: translateY(-4px);
+    }
+    .menu-item img {
+      width: 76px;
+      height: 76px;
+      border-radius: 1.2rem;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #1a1614;
+      border: 1px solid rgba(212, 175, 55, 0.08);
+    }
+    .item-info { flex: 1; min-width: 0; }
+    .item-top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+    .item-top h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #e8e0d8;
+      font-size: 1.08rem;
+    }
+    .item-price { color: #d4af37; font-weight: 600; font-size: 1.02rem; white-space: nowrap; }
+    .item-info p { color: #8a7a6a; font-size: 0.86rem; font-weight: 300; margin-top: 0.25rem; }
+    .item-tags { margin-top: 0.5rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #d4af37;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 0.15rem 0.55rem;
+      border-radius: 60px;
+    }
+
+    /* Buy Now button (menu version) */
+    .btn-buy-menu {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      border: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #d4af37, #b8941e);
+      color: #0d0b0a;
+      margin-top: 0.4rem;
+      box-shadow: 0 4px 15px -4px rgba(212, 175, 55, 0.2);
+    }
+    .btn-buy-menu:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px -4px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #e0c040, #d4af37);
+    }
+
+    /* ===== BUILD YOUR OWN ===== */
+    .build-banner {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.06), rgba(212, 175, 55, 0.01));
+      border-radius: 3rem;
+      padding: 3rem 2.5rem;
+      margin: 3.5rem 0;
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .build-banner::before {
+      content: '';
+      position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.02), transparent 70%);
+      animation: rotateGlow 20s linear infinite;
+    }
+    @keyframes rotateGlow { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+    .build-banner h2 { font-size: 2rem; color: #e8e0d8; position: relative; z-index: 1; }
+    .build-banner p { color: #8a7a6a; position: relative; z-index: 1; max-width: 480px; margin: 0.6rem auto 0; }
+    .build-steps {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.8rem;
+      position: relative;
+      z-index: 1;
+    }
+    .build-step { max-width: 160px; }
+    .build-step .num {
+      font-family: 'Playfair Display', serif;
+      color: #d4af37;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .build-step p { color: #c8c0b8; font-size: 0.85rem; margin-top: 0.3rem; }
+    .build-banner .btn { margin-top: 1.6rem; position: relative; z-index: 1; }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      border: none;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #d4af37, #b8941e);
+      color: #0d0b0a;
+      box-shadow: 0 8px 30px -8px rgba(212, 175, 55, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 40px -8px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(135deg, #e0c040, #d4af37);
+    }
+
+    /* ===== ALLERGEN NOTE ===== */
+    .allergen-note {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      padding: 1.4rem 1.6rem;
+      background: rgba(20, 17, 15, 0.5);
+      border-radius: 1.6rem;
+      border: 1px solid rgba(212, 175, 55, 0.06);
+      margin: 2rem 0 4rem;
+    }
+    .allergen-note i { color: #d4af37; font-size: 1.2rem; margin-top: 0.15rem; }
+    .allergen-note p { color: #8a7a6a; font-size: 0.88rem; font-weight: 300; }
+
+    footer {
+      margin-top: 2rem;
+      padding: 2.5rem 0 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-links a { margin: 0 1rem 0 0; color: #8a7a6a; text-decoration: none; transition: 0.3s ease; font-weight: 300; }
+    .footer-links a:hover { color: #d4af37; }
+    .footer-links span { color: #4a3a2a; }
+    .social i { font-size: 1.6rem; margin-left: 1rem; color: #5a4a3a; transition: 0.3s ease; }
+    .social i:hover { color: #d4af37; transform: scale(1.1); }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(212, 175, 55, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 1.1rem;
+      border-radius: 60px;
+      color: #d4af37;
+      font-size: 1.4rem;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+    .back-to-top:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: scale(1.05);
+      color: #f0d060;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.05);
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { gap: 1rem; }
+      .container { padding: 0 1.2rem; }
+      .section-note { margin-left: 0; }
+      .section-head { flex-wrap: wrap; }
+      .build-banner { padding: 2rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><i class="fas fa-ice-cream"></i> Frost & Scoop</div>
+  <div class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu-ice-cream-shop.html" class="active">Menu</a></li>
+    <li><a href="contactus-ice-cream-shop.html">Contact</a></li>
+  </div>
+</nav>
+
+<section class="menu-hero">
+  <div class="eyebrow">The full lineup</div>
+  <h1>
+  Taste Our <span>icecream flavours</span> Menu
+</h1>
+</h1>
+  <p>Every scoop, sundae, and shake — handcrafted daily with organic dairy and real fruit. No shortcuts, no artificial anything.</p>
+</section>
+
+<div class="category-nav">
+  <a href="#scoops">Scoops</a>
+  <a href="#sundaes">Sundaes</a>
+  <a href="#shakes">Shakes & Floats</a>
+  <a href="#toppings">Toppings</a>
+  <a href="#seasonal">Seasonal</a>
+</div>
+
+<main class="container">
+
+  <!-- SCOOPS -->
+  <section class="menu-section" id="scoops">
+    <div class="section-head">
+      <i class="fas fa-ice-cream"></i>
+      <h4 class="section-title">Scoops12</h4>
+      <span class="section-note">Single $5.90 · Double $8.50 · Triple $10.90</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="images/chocolate-delux-icecream-shop.avif" alt="Chocolate Delight scoop – premium icecream.">
+        <div class="item-info">
+          <div class="item-top"><h4>Chocolate Delight</h4><span class="item-price">$6.50</span></div>
+          <p>Rich Belgian-style cocoa, churned slow for a dense, silky finish.</p>
+          <div class="item-tags"><span class="tag">Organic</span></div>
+          <a href="order.html?product=Chocolate%20Delight&price=6.50" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/vannila-beam-icecream-shop.avif" alt="Vanilla Bean scoop at our icecream shop.">
+        <div class="item-info">
+          <div class="item-top"><h4>Vanilla Bean</h4><span class="item-price">$5.90</span></div>
+          <p>Madagascar bean-flecked custard, our purest and most requested flavor.</p>
+          <div class="item-tags"><span class="tag">Organic</span><span class="tag">Gluten-Free</span></div>
+          <a href="order.html?product=Vanilla%20Bean&price=5.90" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/strawberry-bliss-icecream-shop.avif" alt="Strawberry Bliss scoop – icecream flavors">
+        <div class="item-info">
+          <div class="item-top"><h4>Strawberry Bliss</h4><span class="item-price">$6.20</span></div>
+          <p>Local strawberries folded in fresh, never from concentrate.</p>
+          <div class="item-tags"><span class="tag">Organic</span></div>
+          <a href="order.html?product=Strawberry%20Bliss&price=6.20" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/mNGO-Mgic-icecream-shop.avif" alt="Mango Magic scoop – organic ice cream">
+        <div class="item-info">
+          <div class="item-top"><h4>Mango Magic</h4><span class="item-price">$6.40</span></div>
+          <p>Sun-ripened mango purée for a bright, tropical finish.</p>
+          <div class="item-tags"><span class="tag">Organic</span></div>
+          <a href="order.html?product=Mango%20Magic&price=6.40" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/cookie-and-cream-icecream-shop.avif" alt="Cookies and Cream scoop at our icecream shop">
+        <div class="item-info">
+          <div class="item-top"><h4>Cookies & Cream</h4><span class="item-price">$6.80</span></div>
+          <p>Crushed chocolate cookies swirled through vanilla custard.</p>
+          <div class="item-tags"><span class="tag">Best Seller</span></div>
+          <a href="order.html?product=Cookies%20%26%20Cream&price=6.80" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/pista-icecream-shop.avif" alt="Pistachio scoop – organic ice cream.">
+        <div class="item-info">
+          <div class="item-top"><h4>Pistachio</h4><span class="item-price">$7.10</span></div>
+          <p>Roasted Sicilian pistachios, ground fresh in-house each morning.</p>
+          <div class="item-tags"><span class="tag">Organic</span></div>
+          <a href="order.html?product=Pistachio&price=7.10" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUNDAES -->
+  <section class="menu-section" id="sundaes">
+    <div class="section-head">
+      <i class="fas fa-utensils"></i>
+      <h4 class="section-title">Sundaes</h4>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="images/b-chocolate-icecream-shop.avif" alt="Golden Hot Fudge Sundae – organic ice cream.">
+        <div class="item-info">
+          <div class="item-top"><h4>Golden Hot Fudge</h4><span class="item-price">$9.90</span></div>
+          <p>Two scoops, warm dark fudge, toasted almonds, whipped cream.</p>
+          <a href="order.html?product=Golden%20Hot%20Fudge%20Sundae&price=9.90" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/berry-field-icecream-shop.jfif" alt="Berry Fields Sundae – organic ice cream">
+        <div class="item-info">
+          <div class="item-top"><h4>Berry Fields</h4><span class="item-price">$9.50</span></div>
+          <p>Strawberry and vanilla scoops, fresh berry compote, mint.</p>
+          <a href="order.html?product=Berry%20Fields%20Sundae&price=9.50" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/cookie-crumble-icecream-shop.jfif" alt="Cookie Crumble Sundae – icecream flavors">
+        <div class="item-info">
+          <div class="item-top"><h4>Cookie Crumble</h4><span class="item-price">$10.20</span></div>
+          <p>Cookies & cream, brownie bites, chocolate drizzle.</p>
+          <div class="item-tags"><span class="tag">Best Seller</span></div>
+          <a href="order.html?product=Cookie%20Crumble%20Sundae&price=10.20" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/classic-bannana-spilit-icecream.jfif" alt="Classic Banana Split – icecream flavors.">
+        <div class="item-info">
+          <div class="item-top"><h4>Classic Banana Split</h4><span class="item-price">$11.40</span></div>
+          <p>Three scoops, sliced banana, cherry, house whipped cream.</p>
+          <a href="order.html?product=Classic%20Banana%20Split&price=11.40" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHAKES & FLOATS -->
+  <section class="menu-section" id="shakes">
+    <div class="section-head">
+      <i class="fas fa-blender"></i>
+      <h2 class="section-title">Shakes & Floats – premium icecream</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="images/chocolate-delux-icecream-shop.avif" alt="Chocolate Malt Shake at our icecream shop">
+        <div class="item-info">
+          <div class="item-top"><h4>Chocolate Malt</h4><span class="item-price">$7.80</span></div>
+          <p>Thick-blended chocolate ice cream with a touch of malt.</p>
+          <a href="order.html?product=Chocolate%20Malt%20Shake&price=7.80" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/b-vannila-icecream-shop.avif" alt="Vanilla Cream Soda Float at our icecream shop">
+        <div class="item-info">
+          <div class="item-top"><h4>Vanilla Cream Float</h4><span class="item-price">$7.20</span></div>
+          <p>Vanilla bean scoops floating in house-made cream soda.</p>
+          <a href="order.html?product=Vanilla%20Cream%20Float&price=7.20" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/mango-lassi-icecream-shop.jpg" alt="Mango Lassi Shake at our icecream shop">
+        <div class="item-info">
+          <div class="item-top"><h4>Mango Lassi Shake</h4><span class="item-price">$7.60</span></div>
+          <p>Mango scoops blended with yogurt and a hint of cardamom.</p>
+          <a href="order.html?product=Mango%20Lassi%20Shake&price=7.60" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPPINGS -->
+  <section class="menu-section" id="toppings">
+    <div class="section-head">
+      <i class="fas fa-candy-cane"></i>
+      <h4 class="section-title">Toppings</h4>
+      <span class="section-note">Add to any scoop or sundae</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item" style="padding:0.9rem 1.1rem;">
+        <div class="item-info"><div class="item-top"><h4>Hot Fudge</h4><span class="item-price">$0.90</span></div>
+        <a href="order.html?product=Hot%20Fudge&price=0.90" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
+      </div>
+      <div class="menu-item" style="padding:0.9rem 1.1rem;">
+        <div class="item-info"><div class="item-top"><h4>Toasted Almonds</h4><span class="item-price">$0.80</span></div>
+        <a href="order.html?product=Toasted%20Almonds&price=0.80" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
+      </div>
+      <div class="menu-item" style="padding:0.9rem 1.1rem;">
+        <div class="item-info"><div class="item-top"><h4>Fresh Berry Compote</h4><span class="item-price">$1.10</span></div>
+        <a href="order.html?product=Fresh%20Berry%20Compote&price=1.10" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
+      </div>
+      <div class="menu-item" style="padding:0.9rem 1.1rem;">
+        <div class="item-info"><div class="item-top"><h4>Whipped Cream</h4><span class="item-price">$0.60</span></div>
+        <a href="order.html?product=Whipped%20Cream&price=0.60" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
+      </div>
+      <div class="menu-item" style="padding:0.9rem 1.1rem;">
+        <div class="item-info"><div class="item-top"><h4>Sprinkles</h4><span class="item-price">$0.50</span></div>
+        <a href="order.html?product=Sprinkles&price=0.50" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
+      </div>
+      <div class="menu-item" style="padding:0.9rem 1.1rem;">
+        <div class="item-info"><div class="item-top"><h4>Waffle Cone Upgrade</h4><span class="item-price">$1.30</span></div>
+        <a href="order.html?product=Waffle%20Cone%20Upgrade&price=1.30" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILD YOUR OWN -->
+  <div class="build-banner">
+    <h4>🍨 Build Your Own Sundae</h4>
+    <p>Pick a base, a flavor, and two toppings — your combination, your rules.</p>
+    <div class="build-steps">
+      <div class="build-step"><div class="num">1</div><p>Choose a cup, cone, or waffle bowl</p></div>
+      <div class="build-step"><div class="num">2</div><p>Pick up to 3 scoops</p></div>
+      <div class="build-step"><div class="num">3</div><p>Add 2 toppings of your choice</p></div>
+    </div>
+    <a href="#" class="btn">Start Building — $9.90</a>
+  </div>
+
+  <!-- SEASONAL -->
+  <section class="menu-section" id="seasonal">
+    <div class="section-head">
+      <i class="fas fa-snowflake"></i>
+      <h2 class="section-title">Seasonal Specials – premium icecream</h2>
+      <span class="section-note">Available while it lasts</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="images/pistachio-rose-icecream-shop.png" alt="Roasted Pistachio Rose – icecream flavors.">
+        <div class="item-info">
+          <div class="item-top"><h4>Pistachio Rose</h4><span class="item-price">$7.90</span></div>
+          <p>Roasted pistachio custard with a whisper of rosewater.</p>
+          <div class="item-tags"><span class="tag">Limited</span></div>
+          <a href="order.html?product=Pistachio%20Rose&price=7.90" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="images/mango-chilli-icecream-shop.jfif" alt="Mango Chili – icecream flavors">
+        <div class="item-info">
+          <div class="item-top"><h4>Mango Chili</h4><span class="item-price">$7.20</span></div>
+          <p>Sweet mango with a slow, gentle chili finish.</p>
+          <div class="item-tags"><span class="tag">Limited</span></div>
+          <a href="order.html?product=Mango%20Chili&price=7.20" class="btn-buy-menu"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="allergen-note">
+    <i class="fas fa-circle-info"></i>
+    <p>All flavors are made in a kitchen that handles dairy, nuts, and gluten-containing ingredients. Please let our staff know of any allergies before ordering — we're happy to point you toward a safe option.</p>
+  </div>
+
+</main>
+
+<footer class="container">
+  <div class="footer-links">
+    <a href="index.html">Home</a> <a href="menu-ice-cream-shop.html">Menu</a> <a href="contactus-ice-cream-shop.html">Contact</a> <span>© 2026 Frost & Scoop</span>
+  </div>
+  <div class="social">
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-twitter"></i>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+</body>
+</html>
