@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Frost & Scoop Co. Ice Cream Shop Right Now </title>
+  <meta name="description" content="Contact Frost & Scoop Co. – your premium icecream shop. Reach us for organic ice cream, delicious icecream flavors, or any questions. We'd love to hear from you!">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d0b0a;
+      color: #e8e0d8;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo, .nav-links a, .page-title { font-family: 'Playfair Display', serif; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 0.8rem 2rem;
+      background: rgba(13, 11, 10, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo { font-size: 1.8rem; font-weight: 700; color: #e8e0d8; letter-spacing: -0.5px; }
+    .logo i { color: #d4af37; margin-right: 6px; }
+    .nav-links { display: flex; gap: 2.2rem; font-weight: 500; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: #c8c0b8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a:hover, .nav-links a.active { border-bottom-color: #d4af37; color: #d4af37; }
+
+    /* ===== CONTACT HERO ===== */
+    .contact-hero {
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(145deg, #0d0b0a 0%, #1a1512 100%);
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .contact-hero .eyebrow {
+      display: inline-block;
+      color: #d4af37;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+    .page-title {
+      font-size: clamp(2.6rem, 8vw, 4.2rem);
+      font-weight: 700;
+      color: #e8e0d8;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.1s forwards;
+    }
+    .page-title span {
+      background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: goldShine 4s ease-in-out infinite;
+    }
+    @keyframes goldShine { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+    .contact-hero p {
+      max-width: 520px;
+      margin: 1rem auto 0;
+      color: #a89888;
+      font-weight: 300;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.2s forwards;
+    }
+    @keyframes fadeUp { 0%{opacity:0;transform:translateY(20px);} 100%{opacity:1;transform:translateY(0);} }
+
+    /* ===== QUICK INFO CARDS ===== */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.4rem;
+      margin: 3rem 0;
+    }
+    .info-card {
+      padding: 2rem 1.6rem;
+      background: rgba(20, 17, 15, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 1.8rem;
+      border: 1px solid rgba(212, 175, 55, 0.09);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .info-card:hover {
+      background: rgba(30, 25, 22, 0.9);
+      border-color: rgba(212, 175, 55, 0.25);
+      transform: translateY(-6px);
+    }
+    .info-card i {
+      font-size: 1.8rem;
+      color: #d4af37;
+      margin-bottom: 0.9rem;
+    }
+    .info-card h3 {
+      font-size: 1.1rem;
+      color: #e8e0d8;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .info-card p, .info-card a {
+      color: #a89888;
+      font-size: 0.9rem;
+      font-weight: 300;
+      text-decoration: none;
+      display: block;
+    }
+    .info-card a:hover { color: #d4af37; }
+
+    /* ===== CONTACT MAIN: FORM + MAP ===== */
+    .contact-main {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2.5rem;
+      margin: 2rem 0 4rem;
+      align-items: start;
+    }
+
+    .form-panel {
+      background: rgba(20, 17, 15, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.09);
+      padding: 2.5rem;
+    }
+    .form-panel h2 {
+      font-size: 1.8rem;
+      color: #e8e0d8;
+      margin-bottom: 0.4rem;
+      position: relative;
+    }
+    .form-panel .section-note-inline {
+      color: #8a7a6a;
+      font-size: 0.92rem;
+      font-weight: 300;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem; }
+    .form-group { margin-bottom: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #a89888;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.85rem 1.1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(13, 11, 10, 0.6);
+      color: #e8e0d8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #d4af37;
+      background: rgba(13, 11, 10, 0.9);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #5a4a3a; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      border: none;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #d4af37, #b8941e);
+      color: #0d0b0a;
+      box-shadow: 0 8px 30px -8px rgba(212, 175, 55, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 40px -8px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(135deg, #e0c040, #d4af37);
+    }
+    .btn-block { width: 100%; text-align: center; margin-top: 0.4rem; }
+
+    .form-success {
+      display: none;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 1.3rem;
+      border-radius: 1rem;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      color: #d4af37;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    .form-success.show { display: flex; }
+
+    /* Side panel: map + hours */
+    .side-panel { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .map-card {
+      border-radius: 2rem;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.09);
+      background: rgba(20, 17, 15, 0.6);
+      position: relative;
+      min-height: 260px;
+    }
+    .map-card iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      display: block;
+      filter: grayscale(0.3) contrast(1.05);
+    }
+
+    .hours-card {
+      background: rgba(20, 17, 15, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.09);
+      padding: 1.8rem 2rem;
+    }
+    .hours-card h3 {
+      font-size: 1.15rem;
+      color: #e8e0d8;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hours-card h3 i { color: #d4af37; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+      font-size: 0.9rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span:first-child { color: #c8c0b8; }
+    .hours-row span:last-child { color: #a89888; font-weight: 300; }
+    .hours-row.today span:first-child { color: #d4af37; font-weight: 600; }
+
+    .social-card {
+      background: rgba(20, 17, 15, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.09);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .social-card p { color: #a89888; font-size: 0.9rem; font-weight: 300; }
+    .social-card .social i {
+      font-size: 1.5rem;
+      margin-left: 1rem;
+      color: #8a7a6a;
+      transition: 0.3s ease;
+    }
+    .social-card .social i:hover { color: #d4af37; transform: scale(1.1); }
+
+    /* ===== FAQ ===== */
+    .faq-section { margin: 1rem 0 4rem; }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #e8e0d8;
+      position: relative;
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #d4af37, transparent);
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 0.9rem; }
+    .faq-item {
+      background: rgba(20, 17, 15, 0.6);
+      border-radius: 1.4rem;
+      border: 1px solid rgba(212, 175, 55, 0.08);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #e8e0d8;
+      font-weight: 500;
+      font-size: 0.98rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary i { color: #d4af37; transition: transform 0.3s ease; }
+    .faq-item[open] summary i { transform: rotate(45deg); }
+    .faq-item p {
+      padding: 0 1.6rem 1.3rem;
+      color: #8a7a6a;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 2.5rem 0 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-links a { margin: 0 1rem 0 0; color: #8a7a6a; text-decoration: none; transition: 0.3s ease; font-weight: 300; }
+    .footer-links a:hover { color: #d4af37; }
+    .footer-links span { color: #4a3a2a; }
+    .social i { font-size: 1.6rem; margin-left: 1rem; color: #5a4a3a; transition: 0.3s ease; }
+    .social i:hover { color: #d4af37; transform: scale(1.1); }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(212, 175, 55, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 1.1rem;
+      border-radius: 60px;
+      color: #d4af37;
+      font-size: 1.4rem;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+    .back-to-top:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: scale(1.05);
+      color: #f0d060;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.05);
+    }
+
+    @media (max-width: 900px) {
+      .contact-main { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { gap: 1rem; }
+      .container { padding: 0 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-panel { padding: 1.8rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><i class="fas fa-ice-cream"></i> Frost & Scoop</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="menu-ice-cream-shop.html">Menu</a>
+    <a href="contactus-ice-cream-shop.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<section class="contact-hero">
+  <div class="eyebrow">We'd love to hear from you</div>
+  <h1 class="page-title">Get in <span>Touch</span></h1>
+  <p>Questions about flavors, catering, or a big scoop of feedback? Send us a note or stop by the shop — either way, we're listening.</p>
+</section>
+
+<main class="container">
+
+  <!-- QUICK INFO -->
+  <div class="info-grid">
+    <div class="info-card">
+      <i class="fas fa-location-dot"></i>
+      <h3>Visit Us</h3>
+      <p>124 Maple Grove Lane<br>Riverside District</p>
+    </div>
+    <div class="info-card">
+      <i class="fas fa-phone"></i>
+      <h3>Call Us</h3>
+      <a href="tel:+15551234567">(555) 123-4567</a>
+    </div>
+    <div class="info-card">
+      <i class="fas fa-envelope"></i>
+      <h3>Email Us</h3>
+      <a href="mailto:hello@frostandscoop.com">hello@frostandscoop.com</a>
+    </div>
+    <div class="info-card">
+      <i class="fas fa-clock"></i>
+      <h3>Open Today</h3>
+      <p>11:00 AM – 9:00 PM</p>
+    </div>
+  </div>
+
+  <!-- FORM + MAP -->
+  <div class="contact-main">
+    <div class="form-panel">
+      <h2>Send Us a Message</h2>
+      <p class="section-note-inline">We typically reply within one business day.</p>
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Emma" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Carter" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" placeholder="(555) 000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="topic">What's this about?</label>
+          <select id="topic">
+            <option>General question</option>
+            <option>Catering & events</option>
+            <option>Flavor suggestion</option>
+            <option>Feedback</option>
+            <option>Careers</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-block">Send Message</button>
+        <div class="form-success" id="form-success">
+          <i class="fas fa-circle-check"></i> Thanks! Your message is on its way to us.
+        </div>
+      </form>
+    </div>
+
+    <div class="side-panel">
+      <div class="map-card">
+        <iframe
+          src="https://www.google.com/maps?q=New+York,+NY&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Frost & Scoop location map">
+        </iframe>
+      </div>
+
+      <div class="hours-card">
+        <h3><i class="fas fa-clock"></i> Store Hours</h3>
+        <div class="hours-row today"><span>Today</span><span>11:00 AM – 9:00 PM</span></div>
+        <div class="hours-row"><span>Mon – Thu</span><span>11:00 AM – 9:00 PM</span></div>
+        <div class="hours-row"><span>Fri – Sat</span><span>11:00 AM – 10:30 PM</span></div>
+        <div class="hours-row"><span>Sunday</span><span>12:00 PM – 8:00 PM</span></div>
+      </div>
+
+      <div class="social-card">
+        <p>Follow the scoop</p>
+        <div class="social">
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="section-title">Common Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do you cater private events? <i class="fas fa-plus"></i></summary>
+        <p>Yes — we cater birthdays, weddings, and corporate events with scoop bars, pre-packed cups, or a full sundae station. Share your headcount and date in the form above and we'll follow up with options.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are any flavors dairy-free or vegan? <i class="fas fa-plus"></i></summary>
+        <p>We currently rotate one or two plant-based flavors seasonally. Ask our staff in-shop or mention it in your message and we'll let you know what's available this week.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I place a large pickup order in advance? <i class="fas fa-plus"></i></summary>
+        <p>Absolutely. Orders of a half-gallon or more are best placed at least 24 hours ahead so we can pack everything fresh for your pickup time.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you have gluten-free options? <i class="fas fa-plus"></i></summary>
+        <p>Several of our scoops are gluten-free — check the tags on our menu page, or ask a team member for the current list, since seasonal flavors vary.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="container">
+  <div class="footer-links">
+    <a href="index.html">Home</a> <a href="menu-ice-cream-shop.html">Menu</a> <a href="contactus-ice-cream-shop.html">Contact</a> <span>© 2026 Frost & Scoop</span>
+  </div>
+  <div class="social">
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-twitter"></i>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('form-success').classList.add('show');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
